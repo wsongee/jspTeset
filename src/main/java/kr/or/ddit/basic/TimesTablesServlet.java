@@ -22,7 +22,7 @@ public class TimesTablesServlet extends HttpServlet{
 		writer.println("<html>");
 		writer.println("	<head></head>");
 		writer.println("	<body>");
-		writer.println("	<table border=1>");
+		writer.println("	<table border='1'>");
 		for(int i=1; i<=9; i++) {
 			writer.println("<tr>");
 			for(int j=2; j<=9; j++) {
