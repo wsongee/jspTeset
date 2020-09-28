@@ -36,24 +36,23 @@
 		user id : <input type="text" name="userId" value="브라운"><br>
 		user id : <input type="text" name="userId" value="샐리"><br>
 		password : <input type="text" name="pass" value="pass1234"> <br>
-		<input type="submit" value="전송"/><br><br>
+		<input type="submit" value="전송" id="bu"/><br><br>
 	</form>
 	
 	GET POST 두가지를 선택할 수 있는 라디오 버튼 만들어서
 	FORM 전송시 사용자가 GET, POST 방식을 지정할 수 있도록 <br><br>
-	
-	<form action="<%=request.getContextPath()%>/request/getResponse.jsp" method="POST">
-		<label><input type="radio" id="a" value="get" >get</label><br>
-		<label><input type="radio" id="b" value="post">post</label><br>
-		<input type="submit" value="전송"/>
-		<input type="reset" value="Reset"><br><br>
-	</form>
-	
-	<script>
-// 	 $(function(){
-// 		$('#a').on('click')
+		<label><input type="radio" name="aa" value="get" >get</label><br>
+		<label><input type="radio" name="aa" value="post">post</label><br>
 
-// 		 })
-	</script>
+		<script>
+			 $(function(){
+				$('#bu').on('click',function(){
+
+					
+	
+					})
+		
+				 })
+		</script>
 </body>
 </html>
