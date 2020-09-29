@@ -7,6 +7,18 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+<script>
+	$(function(){
+		$('#get').click(function(){
+			$('#form').attr('method','get');
+
+		})
+		$('#post').click(function(){
+			$('#form').attr('method','post');
+		})
+	})
+</script>
+	
 <body>
 	<%-- 파라미터 : client 서버로 요청을 보낼 때 추가적으로 보낸 값
 				  ex : 로그인 요청시 : 사용자 id, 비밀번호 
@@ -32,7 +44,7 @@
 		method : 요청방식 (form에서는 GET, POST 두가지만 가능하며 DEFAULT는 GET)
 	--%>
 	
-	<form action="<%=request.getContextPath()%>/request/getResponse.jsp" method="GET">
+	<form id="form" action="<%=request.getContextPath()%>/request/getResponse.jsp" method="GET">
 		user id : <input type="text" name="userId" value="브라운"><br>
 		user id : <input type="text" name="userId" value="샐리"><br>
 		password : <input type="text" name="pass" value="pass1234"> <br>
@@ -41,18 +53,9 @@
 	
 	GET POST 두가지를 선택할 수 있는 라디오 버튼 만들어서
 	FORM 전송시 사용자가 GET, POST 방식을 지정할 수 있도록 <br><br>
-		<label><input type="radio" name="aa" value="get" >get</label><br>
-		<label><input type="radio" name="aa" value="post">post</label><br>
+		<label><input type="radio" name="method" value="get" id="get" >get</label><br>
+		<label><input type="radio" name="method" value="post" id="post">post</label><br>
 
-		<script>
-			 $(function(){
-				$('#bu').on('click',function(){
-
-					
-	
-					})
 		
-				 })
-		</script>
 </body>
 </html>
