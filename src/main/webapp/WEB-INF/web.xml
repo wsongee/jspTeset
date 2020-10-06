@@ -37,5 +37,28 @@
   </servlet-mapping>
   
   
+  <!-- 에러페이지 설정 -->
+  
+  <error-page> <!-- 예외타입별 설정 -->
+  	<exception-type> java.lang.ArithmeticException</exception-type> <!-- 예외클래스를 넣어주면 된다. -->
+  	<location>/error/arithmeticException.jsp</location> <!-- 에러일때 어떤화면을 보여줄 것인지-->
+  </error-page>
+
+  <error-page> <!-- 예외타입별 설정 -->
+  	<exception-type> java.lang.RuntimeException</exception-type> <!-- 예외클래스를 넣어주면 된다. -->
+  	<location>/error/runtimeException.jsp</location> <!-- 에러일때 어떤화면을 보여줄 것인지-->
+  </error-page>
+  
+  <error-page>
+  	<error-code>404</error-code> <!-- 응답 상태 코드별 설정 -->
+  	<location>/error/404/404.html</location> <!-- 에러일때 어떤화면을 보여줄 것인지-->
+  </error-page>
+  
+  <error-page>
+  	<error-code>500</error-code>
+  	<location>/error/500/500.html</location> <!-- 에러일때 어떤화면을 보여줄 것인지-->
+  </error-page>
+
+  
 
 </web-app>
