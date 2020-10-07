@@ -22,7 +22,6 @@ public class CookieSplit {
 	public static void main(String[] args) {
 		CookieSplit cookieSplit = new CookieSplit();
 		logger.debug(cookieSplit.getCookieValue("USERNM")); //기대되는값 brown
-//		logger.debug(cookieSplit.getCookieValue("REMEMBERME")); //기대되는값 Y
 		logger.debug(cookieSplit.getCookieValue("TEST")); //기대되는값 T
 		logger.debug(cookieSplit.getCookieValue("XXXX")); //기대되는값 "" (WHITE SPACE)
 	}
