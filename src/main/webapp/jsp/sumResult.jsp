@@ -7,15 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% 
-// 	int start = (int)session.getAttribute("start");
-// 	int end = (int)session.getAttribute("end");
-// 	int sum = start + end;
-	
-	
-%>
 
-	<%= session.getAttribute("sumResult")%>
+	sumResult: <%= session.getAttribute("sumResult")%>
 
 
 	

@@ -54,9 +54,11 @@ public class SumCalculationServlet extends HttpServlet {
 //		List<String> calculation = new ArrayList<>();	
 //		calculation.add("start");
 //		calculation.add("end");
+		
+//		request.setAttribute("sumResult", sumResult);
 
 		HttpSession session =request.getSession();
-		session.setAttribute("sumResult", "sumResult");
+		session.setAttribute("sumResult", sumResult);
 	
 		RequestDispatcher rd = request.getRequestDispatcher("/jsp/sumResult.jsp");
 		rd.forward(request, response);

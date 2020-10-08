@@ -8,6 +8,6 @@
 </head>
 <body>
 
-	mulResult : <%=request.getAttribute("mulResult") %>
+	mulResult : <%=session.getAttribute("mulResult") %>
 </body>
 </html>

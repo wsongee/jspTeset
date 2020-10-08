@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,7 +41,9 @@ public class MulCalculationServlet extends HttpServlet {
 		logger.debug("mulResult : {}", mulResult);
 		
 		
-		request.setAttribute("mulResult",mulResult);
+		HttpSession session =request.getSession();
+		session.setAttribute("mulResult", mulResult);
+	
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/jsp/mulResult.jsp");
 		rd.forward(request, response);
