@@ -1,0 +1,9 @@
+COOKIE 설정시 필요한 값들
+쿠키이름, 쿠키값, path(옵션), expires - 유효기간(옵션)
+
+다음과 같이 쿠키 문자열을 만들어 document.cookie에 할당해준다.
+"USERNM=brown; path=/; expires=Wed, 01 Oct 2020 00:38:25 GMT;"
+
+document.cookie ="USERNM=brown; path=/; expires=Wed, 01 Oct 2020 00:38:25 GMT;";
+
+function setCookie(쿠키이름, 쿠키값, 몇일동안 유요한 쿠키를 만들지 일수)
