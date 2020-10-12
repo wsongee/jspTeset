@@ -19,18 +19,18 @@ public class CookieSplitTest {
 		assertEquals("brown",cookieValue);
 		
 	}
-	
-	@Test
-	public void getCookieFaileTest() {
-		/***Given***/
-		CookieSplit cookieSplit = new CookieSplit();
-		
-		/***When***/
-		String cookieValue = cookieSplit.getCookieValue("PASSWORD");
-		
-		
-		/***Then***/
-		assertEquals("brown",cookieValue);
-		
-	}
+//	
+//	@Test
+//	public void getCookieFaileTest() {
+//		/***Given***/
+//		CookieSplit cookieSplit = new CookieSplit();
+//		
+//		/***When***/
+//		String cookieValue = cookieSplit.getCookieValue("PASSWORD");
+//		
+//		
+//		/***Then***/
+//		assertEquals("brown",cookieValue);
+//		
+//	}
 }
