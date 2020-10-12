@@ -40,7 +40,7 @@
 			<%	MemberVo memberVo = (MemberVo)session.getAttribute("S_MEMBER");
 	
 			%>
-			<a class="navbar-brand" href="#">JSP/SPRING <%=memberVo == null ? "" : "["+memberVo.getUserId()+"]"%></a>
+			<a class="navbar-brand" href="#">JSP/SPRING <%=memberVo == null ? "" : "["+memberVo.getUserid()+"]"%></a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
@@ -61,6 +61,7 @@
 			<ul class="nav nav-sidebar">
 			<li class="active"><a href="#">Main <span class="sr-only">(current)</span></a></li>
 			<li class="active"><a href="#">사용자</a></li>
+			<li class="active"><a href="#"><a href="<%=request.getContextPath() %>/getJobServlet">jobs</a></li>
 		</ul>
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
