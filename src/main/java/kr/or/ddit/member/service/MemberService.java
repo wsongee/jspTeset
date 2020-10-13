@@ -7,30 +7,22 @@ import kr.or.ddit.member.dao.MemberDaoI;
 import kr.or.ddit.member.model.MemberVo;
 
 public class MemberService implements MemberServiceI {
-//	private MemberDaoI memdao;
-//	
-//	private static MemberService service;
-//	
-//	public MemberService() {
-//		memdao = new  MemberDao();
-//	}
-//	
-//	public static MemberService getInstance() {
-//		if(service==null) {
-//			service= new MemberService();
-//		}
-//		return service;
-//	}
+	
+	private MemberDaoI memberDao;
+
+	public MemberService() {
+		memberDao = new  MemberDao();
+	}
+	
+	
 	
 	@Override
 	public MemberVo getMember(String userId) {
-		MemberDaoI memberDao = new MemberDao();
 		return memberDao.getMember(userId);
 	}
 
 	@Override
 	public List<MemberVo> getAllMember() {
-		MemberDaoI memberDao =new MemberDao();
 		return memberDao.getAllMember();
 	}
 
