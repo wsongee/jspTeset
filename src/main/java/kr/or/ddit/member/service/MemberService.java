@@ -13,9 +13,7 @@ public class MemberService implements MemberServiceI {
 	public MemberService() {
 		memberDao = new  MemberDao();
 	}
-	
-	
-	
+
 	@Override
 	public MemberVo getMember(String userId) {
 		return memberDao.getMember(userId);
