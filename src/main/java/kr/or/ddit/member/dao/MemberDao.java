@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import kr.or.ddit.db.MybatisUtil;
 import kr.or.ddit.member.model.MemberVo;
+import kr.or.ddit.member.model.PageVo;
 
 public class MemberDao implements MemberDaoI {
 
@@ -42,6 +43,17 @@ public class MemberDao implements MemberDaoI {
 //		sqlSession.rollback();
 		
 		return memlist;
+	}
+
+	@Override
+	public List<MemberVo> selectMemberPageList(SqlSession sqlSession, PageVo pageVo) {
+		return sqlSession.selectList("member.selectMemberPageList", pageVo);
+		
+	}
+
+	@Override
+	public int selectMemberTotalCnt(SqlSession sqlSession) {
+		 return sqlSession.selectOne("member.selectMemberTotalCnt");
 	}
 	
 	

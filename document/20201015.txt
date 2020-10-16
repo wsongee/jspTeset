@@ -1,0 +1,39 @@
+<페이징처리>
+
+SELECT *
+FROM
+	(SELECT ROWNUM rn, a.*
+	FROM(
+	    SELECT * 
+	    FROM USERS 
+	    ORDER BY userid)a)
+WHERE rn BETWEEN (:page -1) * :pageSize+1 AND :page * :pageSize;
+
+--------------------------------------------------------------------------
+
+WHERE rn BETWEEN #{page}, #{pageSize} AND 7;
+WHERE rn BETWEEN 1 AND {#{page}-1} *{#{page}+1} AND #{page}*#{pageSize};
+WHERE rn BETWEEN 1 AND  (:page -1)* :pageSize +1 AND :page * pageSize;
+      
+      
+#{page}* {#pageSize}-1 *{#pageSize}+1
+      
+WHERE ROWNUM <= 7;
+
+
+1페이지(1-7행)
+2페이지 (8-14행)
+3페이지 (15-21행)
+페이지번호, 페이지사이즈(7)
+
+
+UPDATE users SET usernm='부라운'
+WHERE userid='brown';
+
+delete users
+WHERE userid='sally';
+
+rollback;
+1 전체건수는? ->15
+2. brown의 usernm 컬럼값은 어떻게 나오는가? -> 브라운
+
