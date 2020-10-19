@@ -15,13 +15,7 @@ public class JobService implements JobServiceI{
 	public JobService() {
 		jobdao = new JobDao();
 	}
-	
-	public static JobService getInstance() {
-		if(service==null) {
-			service= new JobService();
-		}
-		return service;
-	}
+	 
 
 	@Override
 	public List<JobVo> getAlljob() {

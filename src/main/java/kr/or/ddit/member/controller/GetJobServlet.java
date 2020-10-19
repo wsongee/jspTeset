@@ -1,4 +1,4 @@
-package kr.or.ddit.basic;
+package kr.or.ddit.member.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -25,13 +25,13 @@ public class GetJobServlet extends HttpServlet {
   
 	 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		JobServiceI service = JobService.getInstance();
+		JobServiceI service = new JobService();
 		
 		List<JobVo> joblist = service.getAlljob();
 		
 		request.setAttribute("joblist",joblist);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/jsp/getAlljob.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/member/jops.jsp");
 		rd.forward(request, response);
 	}
 
