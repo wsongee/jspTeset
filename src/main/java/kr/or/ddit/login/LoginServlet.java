@@ -32,6 +32,7 @@ public class LoginServlet extends HttpServlet {
 	}
 	//로그인화면을 사용자에게 돌려주기
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		logger.debug("loginServlet doGet");
 		request.getRequestDispatcher("/login.jsp").forward(request, response);
 	}
 
