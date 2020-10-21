@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Servlet Filter implementation class UnitFilter
  */
-@WebFilter("/*")
+//@WebFilter("/*")
 public class UnitFilter implements Filter {
 
 	public void destroy() {

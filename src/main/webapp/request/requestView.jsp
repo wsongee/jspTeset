@@ -44,7 +44,7 @@
 		method : 요청방식 (form에서는 GET, POST 두가지만 가능하며 DEFAULT는 GET)
 	--%>
 	
-	<form id="form" action="<%=request.getContextPath()%>/request/getResponse.jsp" method="GET">
+	<form id="form" action="<%=request.getContextPath()%>/request/requestResponse.jsp" method="GET">
 		user id : <input type="text" name="userId" value="브라운"><br>
 		user id : <input type="text" name="userId" value="샐리"><br>
 		password : <input type="text" name="pass" value="pass1234"> <br>
