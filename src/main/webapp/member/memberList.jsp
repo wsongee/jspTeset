@@ -10,8 +10,22 @@
 <meta charset="UTF-8">
 
 <%@ include file="/layout/commonLib.jsp" %>
-</head>
+<script>
+$(document).ready(function(){
+	$("#memberList tr").on("click", function(){
+		//data-userid
+		var userid = $(this).data("userid");
+		console.log("userid :" +userid);
 
+// 		document.location="/사용자상세조회서블릿?userid="+userid;
+		document.location="/member?userid="+userid;
+			
+	});
+});
+
+</script>
+
+</head>
 <body>
 <%@ include file="/layout/header.jsp" %>
 
@@ -37,19 +51,20 @@
 					<th>사용자 별명</th>
 					<th>등록일시</th>
 				</tr>
-		
-			<c:forEach items="${memberList}" var="member">
-			<tr>
-				<td>${member.userid }</td>
-				<td>${member.usernm }</td>
-				<td>${member.alias }</td>
-				<!-- format : yyyy-MM-dd -->
-<%-- 				<td>${member.reg_dt}</td> --%>
-				<td><fmt:formatDate value="${member.reg_dt}" pattern="yyyy-MM-dd"/></td>
-			</tr>
-			</c:forEach>
-			</table>
-		</div>
+				<tbody id="memberList">
+				<c:forEach items="${memberList}" var="member">
+					<tr data-userid="${member.userid }">
+						<td>${member.userid }</td>
+						<td>${member.usernm }</td>
+						<td>${member.alias }</td>
+						<!-- format : yyyy-MM-dd -->
+						<%-- <td>${member.reg_dt}</td> --%>
+						<td><fmt:formatDate value="${member.reg_dt}" pattern="yyyy-MM-dd"/></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
 
 			<a class="btn btn-default pull-right">사용자 등록</a>
 			<div class="text-center">
