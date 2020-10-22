@@ -47,5 +47,23 @@ public class MemberService implements MemberServiceI {
 		return map;
 	}
 
+	@Override
+	public int insertMember(MemberVo memberVo) {
+		// TODO Auto-generated method stub
+		return memberDao.insertMember(memberVo);
+	}
+
+	@Override
+	public int updateMember(MemberVo memberVo) {
+		// TODO Auto-generated method stub
+		return memberDao.updateMember(memberVo);
+	}
+
+	@Override
+	public int deleteMember(String userid) {
+		// TODO Auto-generated method stub
+		return memberDao.deleteMember(userid);
+	}
+
 
 }

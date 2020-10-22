@@ -67,4 +67,18 @@ public class MemberSeviceTest {
 			logger.debug("{}",locale);
 		}
 	}
+	
+	@Test
+	public void updateMemberDaoTest() {
+		/***Given***/
+		MemberServiceI memberService =new MemberService();
+		MemberVo memberVo = new MemberVo("woo","송송","1234","aaaaaaaa","대전중구중앙로76","영밀빌딩 404호","34940","d:\\profile\\wsi.png","wsi.png");
+
+		/***When***/
+		int updateCnt = memberService.updateMember(memberVo);
+		/***Then***/
+		assertEquals(1, updateCnt);
+		
+		
+	}
 }

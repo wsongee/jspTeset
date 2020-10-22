@@ -14,6 +14,7 @@
 
 <title>Jsp</title>
 <%@include file="/layout/commonLib.jsp" %>
+
 </head>
 
 <body>
@@ -99,7 +100,8 @@
 
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-default">정보수정</button>
+							<a href="${cp }/memberUpdate?userid=${memberVo.userid}"><button type="button" class="btn btn-default" >정보수정</button></a>
+							<a href="${cp }/memberDelete?userid=${memberVo.userid}"><button type="button" class="btn btn-default" >삭제하기</button></a>
 						</div>
 					</div>
 				</form>
