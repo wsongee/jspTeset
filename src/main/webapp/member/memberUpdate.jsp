@@ -80,7 +80,7 @@ function initData(){
 					<div class="form-group">
 						<label for="userid" class="col-sm-2 control-label">사용자 아이디</label>
 						<div class="col-sm-10">
-						<input type="text" class="form-control" id="userid" name="userid" placeholder="사용자 아이디" value="${memberVo.userid }">
+						<input type="text" class="form-control" id="userid" name="userid" placeholder="사용자 아이디" value="${memberVo.userid }"READONLY>
 						</div>
 					</div>
 					
@@ -105,7 +105,7 @@ function initData(){
 					<div class="form-group">
 						<label for="addr1" class="col-sm-2 control-label">주소</label>
 						<div class="col-sm-10">
-						<input type="text" class="form-control" id="addr1" name="addr1" placeholder="사용자 주소" READONLY value="${memberVo.addr1 }">
+						<input type="text" class="form-control" id="addr1" name="addr1" placeholder="사용자 주소"  value="${memberVo.addr1 }"READONLY>
 						<button id="zipcodeBtn" type="button"  class="btn btn-default">우편번호찾기</button>
 							<label class="control-label">${memberVo.addr1 }</label>
 						</div>
