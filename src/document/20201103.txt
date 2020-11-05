@@ -89,8 +89,8 @@ dispatcherServlet url-pattern에 따른 정상 처리여부
 
 url-pattern		mvc:default-servlet-handler 	spring controller(/login/view.do)		index.jsp		js/bootstrap.js
  /*                 	   미적용							 X                            		X                   X
- /*							적용
- /                         미적용							  O									O					X
- /                          적용							  O									O					O
+ /*							적용							 X                                  X                   O
+ /                         미적용							 O									O					X
+ /                          적용							 O									O					O
 매칭되는 서블릿이 없을때 디폴트로 매칭된다.
 	
