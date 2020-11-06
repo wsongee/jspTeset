@@ -13,6 +13,7 @@ import kr.or.ddit.db.MybatisUtil;
 import kr.or.ddit.member.dao.MemberDao;
 import kr.or.ddit.member.dao.MemberDaoI;
 import kr.or.ddit.member.model.MemberVo;
+import kr.or.ddit.member.model.PageVo;
 
 @Service("MemberService")
 public class MemberService implements MemberServiceI {
@@ -34,34 +35,41 @@ public class MemberService implements MemberServiceI {
 //		return memberDao.getAllMember();
 //	}
 //
+	@Override
+	public Map<String, Object> selectMemberPageList(PageVo pageVo) {
+		SqlSession sqlSession = MybatisUtil.getsqlSession();
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("memberList", memberDao.selectMemberPageList(sqlSession,pageVo));
+		
+		//15건, 페이지 사이즈를 7로 가정했을 때 3개의 페이지가 나와야함
+		
+		int totalCnt = memberDao.selectMemberTotalCnt(sqlSession);
+		int pages = (int)Math.ceil((double)15/7);
+		map.put("pages", pages);
+		
+		sqlSession.close();
+		return map;
+	}
+
+	@Override
+	public int insertMember(MemberVo memberVo) {
+		// TODO Auto-generated method stub
+		return memberDao.insertMember(memberVo);
+	}
+
+
 //	@Override
-//	public Map<String, Object> selectMemberPageList(PageVo pageVo) {
-//		SqlSession sqlSession = MybatisUtil.getsqlSession();
-//		
-//		Map<String, Object> map = new HashMap<String, Object>();
-//		map.put("memberList", memberDao.selectMemberPageList(sqlSession,pageVo));
-//		
-//		//15건, 페이지 사이즈를 7로 가정했을 때 3개의 페이지가 나와야함
-//		
-//		int totalCnt = memberDao.selectMemberTotalCnt(sqlSession);
-//		int pages = (int)Math.ceil((double)15/7);
-//		map.put("pages", pages);
-//		
-//		sqlSession.close();
-//		return map;
-//	}
-//
-//	@Override
-//	public int insertMember(MemberVo memberVo) {
+//	public int selectMemberTotalCnt() {
 //		// TODO Auto-generated method stub
-//		return memberDao.insertMember(memberVo);
+//		return 0;
 //	}
-//
-//	@Override
-//	public int updateMember(MemberVo memberVo) {
-//		// TODO Auto-generated method stub
-//		return memberDao.updateMember(memberVo);
-//	}
+
+	@Override
+	public int updateMember(MemberVo memberVo) {
+		// TODO Auto-generated method stub
+		return memberDao.updateMember(memberVo);
+	}
 //
 //	@Override
 //	public int deleteMember(String userid) {

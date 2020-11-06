@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import kr.or.ddit.member.model.MemberVo;
+import kr.or.ddit.member.model.PageVo;
 
 public interface MemberDaoI {
 
@@ -12,13 +13,13 @@ public interface MemberDaoI {
 	
 //	List<MemberVo> getAllMember();
 //
-//	List<MemberVo> selectMemberPageList(SqlSession sqlsession, PageVo pageVo);
-//	
-//	int selectMemberTotalCnt(SqlSession sqlsession);
-//	
-//	int insertMember(MemberVo memberVo);
+	List<MemberVo> selectMemberPageList(SqlSession sqlsession, PageVo pageVo);
+	
+	int selectMemberTotalCnt(SqlSession sqlsession);
+	
+	int insertMember(MemberVo memberVo);
 //	
 //	int deleteMember(String userid);
 //	
-//	int updateMember(MemberVo memberVo);
+	int updateMember(MemberVo memberVo);
 }

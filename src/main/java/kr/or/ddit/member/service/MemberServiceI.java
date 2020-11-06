@@ -4,20 +4,21 @@ import java.util.List;
 import java.util.Map;
 
 import kr.or.ddit.member.model.MemberVo;
+import kr.or.ddit.member.model.PageVo;
 
 public interface MemberServiceI {
 
-	MemberVo getMember(String userId);
+	MemberVo getMember(String userid);
 	
 //	List<MemberVo> getAllMember();
-//
-//	Map<String, Object> selectMemberPageList(PageVo pageVo);
+
+	Map<String, Object> selectMemberPageList(PageVo pageVo);
+	
+//	int selectMemberTotalCnt();
+	
+	int insertMember(MemberVo memberVo);
 //	
-////	int selectMemberTotalCnt();
-//	
-//	int insertMember(MemberVo memberVo);
-//	
-//	int updateMember(MemberVo memberVo);
+	int updateMember(MemberVo memberVo);
 //	
 //	int deleteMember(String userid);
 }
