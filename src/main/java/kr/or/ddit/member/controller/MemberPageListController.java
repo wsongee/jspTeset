@@ -11,18 +11,22 @@ import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.ddit.fileUpload.FileUploadUtil;
+import kr.or.ddit.member.model.JSRMemberVo;
 import kr.or.ddit.member.model.MemberVo;
+import kr.or.ddit.member.model.MemberVoValidator;
 import kr.or.ddit.member.model.PageVo;
 import kr.or.ddit.member.service.MemberServiceI;
 
@@ -108,7 +112,16 @@ public class MemberPageListController {
 	}
 	
 	@RequestMapping("/memberRegist")
-	public String memberRegist( MemberVo memberVo, @RequestParam("file")MultipartFile file) {
+	public String memberRegist(@Valid MemberVo memberVo, BindingResult br, @RequestParam("file")MultipartFile file) {
+//		public String memberRegist(@Valid JSRMemberVo memberVo, BindingResult br, @RequestParam("file")MultipartFile file) {
+		
+//		new MemberVoValidator().validate(memberVo, br);
+		
+		//검증을 통과하지 못했으므로 사용자 등록화면으로 이동
+		if(br.hasErrors()) {
+			return "member/memberRegist";
+		}
+		
 		
 		logger.debug("memberVo : {},{},{},{},{},{},{}",memberVo);
 

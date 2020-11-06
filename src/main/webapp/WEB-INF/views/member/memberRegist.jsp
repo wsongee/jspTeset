@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +36,7 @@ $(document).ready(function(){
 		//validation 로직은 일단 생략
    		$("#frm").submit();
    	});
-//    	initData();
+   	initData();
 });
 
 function initData(){
@@ -85,6 +86,9 @@ function initData(){
 						<label for="userNm" class="col-sm-2 control-label">사용자 이름</label>
 						<div class="col-sm-10">
 						<input type="text" class="form-control" id="usernm" name="usernm" placeholder="사용자 이름" value="${memberVo.usernm }">
+						<!-- path="memberVo.usernm" 의 memberVo는 객체명이아니라 클래스명 앞글자를 소문자로 바꿔서 쓰는것임-->
+						<span style="color:red"><form:errors path="memberVo.usernm"/></span>
+						<span style="color:red"><form:errors path="jSRMemberVo.usernm"/></span>
 						</div>
 					</div>
 					<div class="form-group">
