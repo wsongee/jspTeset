@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.View;
 
 import kr.or.ddit.fileUpload.FileUploadUtil;
 import kr.or.ddit.member.model.JSRMemberVo;
@@ -29,6 +30,7 @@ import kr.or.ddit.member.model.MemberVo;
 import kr.or.ddit.member.model.MemberVoValidator;
 import kr.or.ddit.member.model.PageVo;
 import kr.or.ddit.member.service.MemberServiceI;
+import kr.or.ddit.mvc.view.ProfileImgView;
 
 @RequestMapping("/member")
 @Controller
@@ -77,12 +79,28 @@ public class MemberPageListController {
 		
 		model.addAttribute("memberVo", memberVo);
 		
-	
 		return "member/member";
 	}
 	
+	
+
+	@RequestMapping("/profileImgView")
+	public String profileImgView(@RequestParam("userid")String userid, Model model, HttpServletResponse response) throws FileNotFoundException, IOException {
+		//응답으로 생성하려고 하는 것 : 이미지 파일을 읽어서 output stream 객체에 쓰는 것
+		
+		MemberVo memberVo = memberService.getMember(userid);
+		
+		model.addAttribute("filepath", memberVo.getFilename());
+		
+		return "profileImgView";
+		
+	}
+	
+	
 	@RequestMapping("/profileImg")
 	public void profileImg(@RequestParam("userid")String userid, HttpServletResponse response) throws FileNotFoundException, IOException {
+		
+		response.setContentType("image/png");
 		
 		MemberVo memberVo= memberService.getMember(userid);
 		
@@ -103,6 +121,45 @@ public class MemberPageListController {
 		sos.close();
 		
 //		return "member/member";
+	}
+	
+	
+	@RequestMapping("/profileDownloadView")
+	public String profileDownloadView(Model model,@RequestParam("userid")String userid, HttpServletResponse response) throws IOException {
+		
+		MemberVo memberVo = memberService.getMember(userid);
+		
+		model.addAttribute("filepath", memberVo.getFilename());
+		
+		return "profileDownloadView";
+	}
+	
+	
+	@RequestMapping("/profileDownload")
+	public void profileDownload(@RequestParam("userid")String userid, HttpServletResponse response) throws IOException {
+		
+		//db에서 사용자 filename 확인
+		MemberVo memberVo= memberService.getMember(userid);
+		
+		//response content-type 설정(이미지파일이라는 것을 알려주기위해)
+		response.setHeader("Content-Disposition", "attachment; filename=\""+ memberVo.getRealFilename()+"\"");
+		response.setContentType("application/octet-stream"); //addHeader 메소드를 사용해도 된다. "image"로만 사용해도된다.
+		
+		//경로확인 후 파일 입출력을 통해 응답생성
+		//파일을 읽고 응답생성
+
+		FileInputStream fis = new FileInputStream(memberVo.getFilename());
+		ServletOutputStream sos =  response.getOutputStream();
+		
+		byte[] buffer = new byte[512];
+		
+		while (fis.read(buffer) != -1) {
+			sos.write(buffer);
+		}
+		
+		fis.close();
+		sos.flush(); 
+		sos.close();
 	}
 	
 	
