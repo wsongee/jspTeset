@@ -68,7 +68,8 @@ public class MemberPageListController {
 		model.addAttribute("pages", map.get("pages"));
 		
 		
-		return "member/memberList";
+//		return "member/memberList";
+		return "tiles/memberTiles/memberListContent";
 	}
 	
 	
@@ -79,7 +80,9 @@ public class MemberPageListController {
 		
 		model.addAttribute("memberVo", memberVo);
 		
-		return "member/member";
+//		return "member/member";
+		return "tiles/memberTiles/memberContent";
+
 	}
 	
 	
@@ -120,7 +123,6 @@ public class MemberPageListController {
 		sos.flush(); 
 		sos.close();
 		
-//		return "member/member";
 	}
 	
 	
@@ -165,7 +167,8 @@ public class MemberPageListController {
 	
 	@RequestMapping("/memberRegistView")
 	public String memberResistView() {
-		return "member/memberRegist";
+//		return "member/memberRegist";
+		return "tiles/memberTiles/memberRegistContent";
 	}
 	
 	@RequestMapping("/memberRegist")
@@ -220,7 +223,7 @@ public class MemberPageListController {
 			// redirect한다는것은 메소드 인자를 웹 브라우저 주소창에 넣으라는 것이기 떄문에 정상동작이 안될수 있으므로 contextpath넣어주기
 			return "redirect:/member/memberPageList";
 		} else {
-			return "member/memberRegist";
+			return "tiles/memberTiles/memberRegistContent";
 		}
 	}
 	
@@ -232,7 +235,8 @@ public class MemberPageListController {
 		memberVo.setUserid(userid);
 		model.addAttribute("memberVo", memberVo);
 		
-		return "member/memberUpdate";
+//		return "member/memberUpdate";
+		return "tiles/memberTiles/memberUpdateContent";
 	}
 	
 	@RequestMapping("/memberupdate2")
