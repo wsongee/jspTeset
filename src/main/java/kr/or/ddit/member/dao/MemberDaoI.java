@@ -11,7 +11,7 @@ public interface MemberDaoI {
 
 	MemberVo getMember(String userId);
 	
-//	List<MemberVo> getAllMember();
+	List<MemberVo> getAllMember();
 //
 	List<MemberVo> selectMemberPageList(SqlSession sqlsession, PageVo pageVo);
 	
