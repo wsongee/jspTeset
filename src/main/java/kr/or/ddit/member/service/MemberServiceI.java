@@ -10,7 +10,7 @@ public interface MemberServiceI {
 
 	MemberVo getMember(String userid);
 	
-//	List<MemberVo> getAllMember();
+	List<MemberVo> getAllMember();
 
 	Map<String, Object> selectMemberPageList(PageVo pageVo);
 	
@@ -19,6 +19,4 @@ public interface MemberServiceI {
 	int insertMember(MemberVo memberVo);
 //	
 	int updateMember(MemberVo memberVo);
-//	
-//	int deleteMember(String userid);
 }

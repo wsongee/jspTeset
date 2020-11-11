@@ -35,10 +35,10 @@ public class MemberDao implements MemberDaoI {
 		//한건 : selectOne
 		//여러건: selectList
 		
-		MemberVo memberVo = sqlSession.selectOne("member.getMember", userId);
+//		MemberVo memberVo = sqlSession.selectOne("member.getMember", userId);
 //		sqlSession.close();
 		
-		return memberVo;
+		return sqlSession.selectOne("member.getMember", userId);
 	}
 
 	@Override
@@ -54,13 +54,13 @@ public class MemberDao implements MemberDaoI {
 	}
 
 	@Override
-	public List<MemberVo> selectMemberPageList(SqlSession sqlSession, PageVo pageVo) {
+	public List<MemberVo> selectMemberPageList(PageVo pageVo) {
 		return sqlSession.selectList("member.selectMemberPageList", pageVo);
 		
 	}
 
 	@Override
-	public int selectMemberTotalCnt(SqlSession sqlSession) {
+	public int selectMemberTotalCnt() {
 		 return sqlSession.selectOne("member.selectMemberTotalCnt");
 	}
 
@@ -102,20 +102,9 @@ public class MemberDao implements MemberDaoI {
 //
 	@Override
 	public int updateMember(MemberVo memberVo) {
-//		SqlSession sqlSession = MybatisUtil.getsqlSession();
-		int updateCnt=0; 
-		try {
-			updateCnt = sqlSession.update("member.updateMember",memberVo);
-		}catch(Exception e) {
-		}
-		
-		if(updateCnt == 1) {
-//			sqlSession.commit();
-		}else {
-//			sqlSession.rollback();
-		}
-		
-		return updateCnt;
+
+
+		return sqlSession.update("member.updateMember",memberVo);
 	}
 	
 

@@ -12,14 +12,12 @@ public interface MemberDaoI {
 	MemberVo getMember(String userId);
 	
 	List<MemberVo> getAllMember();
-//
-	List<MemberVo> selectMemberPageList(SqlSession sqlsession, PageVo pageVo);
+
+	List<MemberVo> selectMemberPageList(PageVo pageVo);
 	
-	int selectMemberTotalCnt(SqlSession sqlsession);
+	int selectMemberTotalCnt();
 	
 	int insertMember(MemberVo memberVo);
-//	
-//	int deleteMember(String userid);
-//	
+
 	int updateMember(MemberVo memberVo);
 }

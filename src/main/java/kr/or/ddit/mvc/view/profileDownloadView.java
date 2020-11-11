@@ -37,5 +37,4 @@ public class profileDownloadView extends AbstractView {
 		
 	}
 
-	
 }

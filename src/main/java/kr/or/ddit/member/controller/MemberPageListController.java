@@ -72,6 +72,49 @@ public class MemberPageListController {
 		return "tiles/memberTiles/memberListContent";
 	}
 	
+	//memberList => ajax로 
+	@RequestMapping("/listAjaxPage")
+	public String listAjaxPage() {
+		return "tiles/memberTiles/listAjaxPage";
+	}
+	
+	//페이지 요청(/list와 다르게 page, pageSize 파라미터가 반드시 존재한다는 가정으로 작성
+	@RequestMapping("/listAjax")
+	public String listAjax(PageVo pageVo, Model model) {
+		logger.debug("pageVo :{}" ,pageVo);
+		
+		Map<String, Object> map = memberService.selectMemberPageList(pageVo);
+		model.addAttribute("memberList", map.get("memberList"));
+		model.addAttribute("pages", map.get("pages"));
+		
+		return "jsonView";
+	}
+	
+	//페이지 요청(/list와 다르게 page, pageSize 파라미터가 반드시 존재한다는 가정으로 작성
+	@RequestMapping("/listAjaxHTML")
+	public String listAjaxHTML(PageVo pageVo, Model model) {
+		logger.debug("pageVo :{}" ,pageVo);
+		
+		Map<String, Object> map = memberService.selectMemberPageList(pageVo);
+		model.addAttribute("memberList", map.get("memberList"));
+		model.addAttribute("pages", map.get("pages"));
+		
+		//응답을 html ==> jsp로 생성
+		return "member/listAjaxHTML";
+	}
+	
+	//member 상세보기 => ajax로
+	@RequestMapping("/memberAjaxPage")
+	public String memberAjaxPage() {
+		return "tiles/member/memberAjaxPage";
+	}
+	
+	//member 상세보기 => ajax로
+	@RequestMapping("/memberAjax")
+	public String memberAjax(Model model,@RequestParam("userid")String userid) {
+		model.addAttribute("memberVo", memberService.getMember(userid));
+		return "jsonView";
+	}
 	
 	@RequestMapping("/memberSelect")
 	public String memberSelect(Model model,@RequestParam("userid")String userid) {
@@ -213,8 +256,10 @@ public class MemberPageListController {
 		
 //		//사용자정보등록
 //		MemberVo memberVo = new MemberVo(userid, pass, usernm, alias, addr1, addr2, zipcode, filePath, file);
+		int insertCnt=0;
 		
-		int insertCnt = memberService.insertMember(memberVo);
+		try {
+		insertCnt = memberService.insertMember(memberVo);
 		
 		// 1건이 입력되었을때 :정상 ->memberList 페이지로 이동
 		// 1건이 아닐때: 비정상
@@ -222,9 +267,14 @@ public class MemberPageListController {
 			// 서버의 상태가 바뀔때는 중복이 되지 않게 redirect요청을 해준다.
 			// redirect한다는것은 메소드 인자를 웹 브라우저 주소창에 넣으라는 것이기 떄문에 정상동작이 안될수 있으므로 contextpath넣어주기
 			return "redirect:/member/memberPageList";
-		} else {
-			return "tiles/memberTiles/memberRegistContent";
+		} 
+		
+		}catch (Exception e) {
+			// TODO: handle exception
 		}
+			
+			return "tiles/memberTiles/memberRegistContent";
+		
 	}
 	
 	
@@ -268,7 +318,6 @@ public class MemberPageListController {
 
 //		if(memberVo.getRealFilename()==null) {
 //			memberVo = memberService.getMember(userid);
-//		
 //		}
 		
 //		//사용자정보등록

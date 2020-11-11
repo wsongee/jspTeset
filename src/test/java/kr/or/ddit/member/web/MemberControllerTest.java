@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.fileUpload;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
@@ -32,7 +33,7 @@ public class MemberControllerTest extends WebTestConfig {
 				.param("page","1")
 				.param("pageSize", "5"))
 				.andExpect(status().is(200))
-				.andExpect(view().name("member/memberList"))
+				.andExpect(view().name("tiles/memberTiles/memberListContent"))
 				.andExpect(model().attributeExists("page"))
 				.andExpect(model().attributeExists("pageSize"))
 				.andExpect(model().attributeExists("pageVo"))
@@ -45,7 +46,7 @@ public class MemberControllerTest extends WebTestConfig {
 		mockMvc.perform(get("/member/memberSelect")
 				.param("userid", "brown"))
 				.andExpect(status().is(200))
-				.andExpect(view().name("member/member"))
+				.andExpect(view().name("tiles/memberTiles/memberContent"))
 				.andExpect(model().attributeExists("memberVo"));
 	}
 	
@@ -61,7 +62,7 @@ public class MemberControllerTest extends WebTestConfig {
 	public void memberRegistViewTest() throws Exception {
 		mockMvc.perform(get("/member/memberRegistView"))
 				.andExpect(status().isOk())
-				.andExpect(view().name("member/memberRegist"));
+				.andExpect(view().name("tiles/memberTiles/memberRegistContent"));
 		
 	}
 	
@@ -73,7 +74,7 @@ public class MemberControllerTest extends WebTestConfig {
 		
 		mockMvc.perform(fileUpload("/member/memberRegist")
 				.file(file)
-				.param("userid", "swwww")
+				.param("userid", "swwww1")
 				.param("pass", "1234")
 				.param("usernm", "우송이")
 				.param("alias", "송이버섯")
@@ -82,8 +83,8 @@ public class MemberControllerTest extends WebTestConfig {
 				.param("addr2", "영민빌딩쓰")
 				.param("zipcode", "11111"))
 		.andExpect(status().is(302))
-		.andExpect(view().name("redirect:/member/memberPageList"));
-				
+		.andExpect(view().name("redirect:/member/memberPageList"))
+		.andDo(print());
 	}
 	
 	@Test
@@ -91,7 +92,7 @@ public class MemberControllerTest extends WebTestConfig {
 		mockMvc.perform(get("/member/memberUpdateView")
 				.param("userid", "brown"))
 		.andExpect(status().is(200))
-		.andExpect(view().name("member/memberUpdate"));
+		.andExpect(view().name("tiles/memberTiles/memberUpdateContent"));
 	}
 	
 	
