@@ -1,5 +1,6 @@
 package kr.or.ddit.member.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -70,6 +71,12 @@ public class MemberVo {
 	public void setAlias(String alias) {
 		this.alias = alias;
 	}
+	
+	//reg_dt에 대한 formatting
+	public String getFmt_reg_dt() {
+		return reg_dt == null ? "" : new SimpleDateFormat("yyyy-MM-dd").format(reg_dt);
+	}
+	
 	public Date getReg_dt() {
 		return reg_dt;
 	}
