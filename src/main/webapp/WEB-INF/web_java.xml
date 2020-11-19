@@ -21,6 +21,11 @@
 					kr.or.ddit.config.spring.DataSourceContext
 					kr.or.ddit.config.spring.TransactionContext
 		</param-value>
+<!-- 		<param-value>classpath:kr/or/ddit/config/spring/root-context.xml -->
+<!-- 					 classpath:kr/or/ddit/config/spring/aop-context.xml -->
+<!-- 					 classpath:kr/or/ddit/config/spring/datasource-context.xml -->
+<!-- 					 classpath:kr/or/ddit/config/spring/transaction-context.xml -->
+<!-- 		</param-value> -->
 	</context-param>
 	
 	<context-param>
@@ -49,7 +54,7 @@
 		
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-
+	
 	<servlet-mapping>
 		<servlet-name>dispatcherServlet</servlet-name>
 		<url-pattern>/</url-pattern>

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.view.AbstractView;
 
-public class profileDownloadView extends AbstractView {
+public class ProfileDownloadView extends AbstractView {
 
 	@Override
 	protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request,

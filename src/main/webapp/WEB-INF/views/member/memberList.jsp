@@ -21,7 +21,7 @@ $(document).ready(function(){
 		document.location="/member/memberSelect?userid="+userid;
 			
 	});
-});
+}); 
 
 </script>
 
@@ -64,7 +64,7 @@ $(document).ready(function(){
 				</c:forEach>
 			</tbody>
 		</table>
-	</div>
+	</div> 
 
 			<a href="${cp}/member/memberRegistView" class="btn btn-default pull-right">사용자 등록</a>
 			<div class="text-center">

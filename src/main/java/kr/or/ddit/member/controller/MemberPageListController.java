@@ -85,7 +85,7 @@ public class MemberPageListController {
 		
 		Map<String, Object> map = memberService.selectMemberPageList(pageVo);
 		model.addAttribute("memberList", map.get("memberList"));
-		model.addAttribute("pages", map.get("pages"));
+		model.addAttribute("pages", map.get("pages")); 
 		
 		return "jsonView";
 	}
